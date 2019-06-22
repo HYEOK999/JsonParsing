@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//
+
 //struct Loan {
 //    var name : String = ""
 //    var country : String = ""

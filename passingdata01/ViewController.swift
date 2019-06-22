@@ -23,11 +23,27 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    /*
+     
+     
+     파싱
+     1. 애플 제공 -> jsonserialization
+     2. 애플 제공 -> codable 방식
+     3. 오픈소스
+     
+     네트워킹
+     1. 애플제공 (네트워킹 체크)
+     2. 오픈소스 활용
+     
+     */
+    
     func getLoanData(){
         
         let loanURL = URL(string: kivaLoanURL)
         let request = URLRequest(url: loanURL!)
         SVProgressHUD.show()
+        
+        //네트워킹
         let tesk = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error != nil{
                 print(error?.localizedDescription)
@@ -49,30 +65,41 @@ class ViewController: UIViewController {
         tesk.resume()
     }
     
+    
+    // 파싱 
     func parseJsonData(data: Data) -> [Loan] {
         var loans = [Loan]()
+//
+//        do{
+//            //json 형태로 변환
+//           let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
+//
+//            let jsonLoans = jsonResult!["loans"] as! [AnyObject]
+//
+//            for jsonLoan in jsonLoans{
+//                var loan  = Loan() // 각각 하나의 항목
+//
+//                loan.name = jsonLoan["name"] as! String
+//                loan.use = jsonLoan["use"] as! String
+//                loan.amount = jsonLoan["loan_amount"] as! Int
+//
+//                let location = jsonLoan["location"] as! [String:AnyObject]
+//
+//                loan.country = location["country"] as! String
+//
+//                loans.append(loan)
+//            }
+//
+//        } catch {
+//            print(error)
+//        }
+        
+        let decoder = JSONDecoder()
         
         do{
-            //json 형태로 변환
-           let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
-            
-            let jsonLoans = jsonResult!["loans"] as! [AnyObject]
-            
-            for jsonLoan in jsonLoans{
-                var loan  = Loan() // 각각 하나의 항목
-                
-                loan.name = jsonLoan["name"] as! String
-                loan.use = jsonLoan["use"] as! String
-                loan.amount = jsonLoan["loan_amount"] as! Int
-                
-                let location = jsonLoan["location"] as! [String:AnyObject]
-                
-                loan.country = location["country"] as! String
-                
-                loans.append(loan)
-            }
-            
-        } catch {
+            let loanDataStore = try decoder.decode(LoanDataStore.self, from: data)
+            loans = loanDataStore.loans
+        } catch{
             print(error)
         }
         
