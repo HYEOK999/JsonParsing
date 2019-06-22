@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ViewController: UIViewController {
 
@@ -23,11 +24,14 @@ class ViewController: UIViewController {
     }
     
     func getLoanData(){
+        
         let loanURL = URL(string: kivaLoanURL)
         let request = URLRequest(url: loanURL!)
+        SVProgressHUD.show()
         let tesk = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error != nil{
                 print(error?.localizedDescription)
+                SVProgressHUD.dismiss()
                 return
             }
             else{
@@ -38,6 +42,7 @@ class ViewController: UIViewController {
                     OperationQueue.main.addOperation {
                         self.tableVW.reloadData()
                     }
+                    SVProgressHUD.dismiss()
                 }
             }
         }
