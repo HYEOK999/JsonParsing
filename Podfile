@@ -6,6 +6,7 @@ target 'passingdata01' do
   use_frameworks!
 
 pod 'SVProgressHUD'
+pod 'Alamofire'
 
   # Pods for passingdata01
 

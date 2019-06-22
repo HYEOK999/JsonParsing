@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import Alamofire
 
 class ViewController: UIViewController {
 
@@ -43,26 +44,46 @@ class ViewController: UIViewController {
         let request = URLRequest(url: loanURL!)
         SVProgressHUD.show()
         
-        //네트워킹
-        let tesk = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if error != nil{
-                print(error?.localizedDescription)
-                SVProgressHUD.dismiss()
-                return
-            }
-            else{
-                if let data = data{
+//        //네트워킹
+//        let tesk = URLSession.shared.dataTask(with: request) { (data, response, error) in
+//            if error != nil{
+//                print(error?.localizedDescription)
+//                SVProgressHUD.dismiss()
+//                return
+//            }
+//            else{
+//                if let data = data{
+//                    self.loans = self.parseJsonData(data: data)
+//
+//                    //새로고침
+//                    OperationQueue.main.addOperation {
+//                        self.tableVW.reloadData()
+//                    }
+//                    SVProgressHUD.dismiss()
+//                }
+//            }
+//        }
+//        tesk.resume()
+        
+        
+        //responseJSON -> 바로 파싱까지
+        //responseData -> Data만
+        Alamofire.request(request).responseData { (result) in
+            switch result.result{
+                case .failure(let err) :
+                    print(err.localizedDescription)
+                    SVProgressHUD.dismiss()
+                    break
+                case .success(let data) :
                     self.loans = self.parseJsonData(data: data)
                     
-                    //새로고침
                     OperationQueue.main.addOperation {
                         self.tableVW.reloadData()
                     }
                     SVProgressHUD.dismiss()
-                }
+                    break
             }
         }
-        tesk.resume()
     }
     
     
