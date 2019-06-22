@@ -15,6 +15,7 @@
 		48DDF93522BDEDEC000BA1B6 /* passingdata01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DDF93422BDEDEC000BA1B6 /* passingdata01Tests.swift */; };
 		48DDF94022BDEDEC000BA1B6 /* passingdata01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DDF93F22BDEDEC000BA1B6 /* passingdata01UITests.swift */; };
 		48DDF94E22BDEE7D000BA1B6 /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DDF94D22BDEE7D000BA1B6 /* DataTableViewCell.swift */; };
+		48DDF95022BDF550000BA1B6 /* Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DDF94F22BDF550000BA1B6 /* Loan.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		48DDF93F22BDEDEC000BA1B6 /* passingdata01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passingdata01UITests.swift; sourceTree = "<group>"; };
 		48DDF94122BDEDEC000BA1B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48DDF94D22BDEE7D000BA1B6 /* DataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
+		48DDF94F22BDF550000BA1B6 /* Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loan.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				48DDF92822BDEDEC000BA1B6 /* LaunchScreen.storyboard */,
 				48DDF92B22BDEDEC000BA1B6 /* Info.plist */,
 				48DDF94D22BDEE7D000BA1B6 /* DataTableViewCell.swift */,
+				48DDF94F22BDF550000BA1B6 /* Loan.swift */,
 			);
 			path = passingdata01;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				48DDF92222BDEDEB000BA1B6 /* ViewController.swift in Sources */,
 				48DDF94E22BDEE7D000BA1B6 /* DataTableViewCell.swift in Sources */,
 				48DDF92022BDEDEB000BA1B6 /* AppDelegate.swift in Sources */,
+				48DDF95022BDF550000BA1B6 /* Loan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

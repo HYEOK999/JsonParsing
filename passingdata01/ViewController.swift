@@ -35,6 +35,10 @@ class ViewController: UIViewController {
         tesk.resume()
     }
     
+    func parseJsonData(data: Data) {
+        
+    }
+    
 }
 
 extension ViewController : UITableViewDataSource, UITableViewDelegate{
