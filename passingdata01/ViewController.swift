@@ -24,6 +24,17 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetail"{
+            if let indexPath = tableVW.indexPathForSelectedRow{
+                let destinationVC = segue.destination as! DetailViewController
+                destinationVC.name = loans[indexPath.row].name
+                destinationVC.amount = loans[indexPath.row].amount
+                destinationVC.country = loans[indexPath.row].country
+                destinationVC.use = loans[indexPath.row].use
+            }
+        }
+    }
     /*
      
      
